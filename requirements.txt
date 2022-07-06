@@ -1,0 +1,6 @@
+streamlit
+subgrounds
+subgrounds
+plotly
+psycopg2
+my_pickledb
