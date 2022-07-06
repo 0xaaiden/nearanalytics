@@ -17,7 +17,14 @@ sg = Subgrounds()
 subgraph = sg.load_subgraph("https://api.thegraph.com/subgraphs/name/azizaiden/burrow-tst1")
 dailysnapshot = subgraph.Query.deposits(
     orderBy="timestamp", where={"asset":"wrap.near"}, orderDirection="asc", first=30000)
-    
+
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)    
 # ticker = st_autorefresh(interval=REFRESH_INTERVAL_SEC * 1000, key="ticker")
 st.header("🦔 Burrow Dashboard")
 
@@ -203,10 +210,3 @@ if wd_enable:
     st.subheader("Withdraws by Asset")
     plot_deposits(df_wd, dict_dfs_wd)
 
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
